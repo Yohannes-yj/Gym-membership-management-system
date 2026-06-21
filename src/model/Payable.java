@@ -1,5 +1,5 @@
 package model;
 
-public class Payable {
-    
+public interface Payable {
+    double calculateFee();
 }

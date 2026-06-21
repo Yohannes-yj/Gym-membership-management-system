@@ -28,7 +28,14 @@ public class Member extends Person {
 
     @Override
     public void displayInfo() {
-        super.displayInfo();
         System.out.println("Membership Type: " + membershipType);
+    }
+    @Override
+    public String toString() {
+        return getId() + "," +
+               getName() + "," +
+               getAge() + "," +
+               getPhone() + "," +
+               membershipType;
     }
 }

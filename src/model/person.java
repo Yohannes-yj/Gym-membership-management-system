@@ -1,10 +1,13 @@
 package model;
 
-public class person {
-    protected int id;
-     protected String name;
-    protected int age;
-    protected String phone;
+import java.io.Serializable;
+
+public class Person implements Serializable {
+
+    private int id;
+    private String name;
+    private int age;
+    private String phone;
 
     public Person() {
     }
@@ -54,6 +57,4 @@ public class person {
         System.out.println("Age: " + age);
         System.out.println("Phone: " + phone);
     }
-    
-    
 }
