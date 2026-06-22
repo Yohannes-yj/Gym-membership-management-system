@@ -1,0 +1,9 @@
+{
+    "java.project.sourcePaths": [
+        "src"
+    ],
+    "java.project.referencedLibraries": [
+        "lib\\mysql-connector-j-9.7.0.jar",
+        "c:\\Users\\yoham\\OneDrive\\Desktop\\Gym-membership-management-system\\lib\\mysql-connector-j-9.7.0.jar"
+    ]
+}
