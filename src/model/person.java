@@ -4,13 +4,12 @@ import java.io.Serializable;
 
 public class Person implements Serializable {
 
-    private int id;
-    private String name;
-    private int age;
-    private String phone;
+    protected int id;
+    protected String name;
+    protected int age;
+    protected String phone;
 
-    public Person() {
-    }
+}
 
     public Person(int id, String name, int age, String phone) {
         this.id = id;
