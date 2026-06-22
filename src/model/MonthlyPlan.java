@@ -1,11 +1,12 @@
 package model;
+public class MonthlyPlan extends MembershipPlan {
 
-public class MonthlyPlan extends MembershipPlan{
-    public MonthlyPlan(){
+    public MonthlyPlan() {
         super("Monthly Plan");
     }
+
     @Override
     public double calculateFee() {
-        return 450.00;
+        return 500;
     }
 }
