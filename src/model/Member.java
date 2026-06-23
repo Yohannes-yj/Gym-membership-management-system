@@ -38,4 +38,8 @@ public class Member extends Person {
                getPhone() + "," +
                membershipType;
     }
+
+    public int getId() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }
