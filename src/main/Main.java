@@ -1,12 +1,13 @@
 package main;
 
-import gui.MainFrame;
+import gui.LoginFrame;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        new MainFrame();
+        new LoginFrame();
 
     }
+
 }

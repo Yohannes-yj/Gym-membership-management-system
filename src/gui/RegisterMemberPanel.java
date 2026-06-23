@@ -40,11 +40,10 @@ public class RegisterMemberPanel extends JPanel {
         typeField = new JTextField();
         add(typeField);
 
-        JButton button = new JButton("Register");
+        JButton registerButton = new JButton("Register");
+        add(registerButton);
 
-        add(button);
-
-        button.addActionListener(e -> registerMember());
+        registerButton.addActionListener(e -> registerMember());
     }
 
     private void registerMember() {
@@ -70,13 +69,11 @@ public class RegisterMemberPanel extends JPanel {
                             type
                     );
 
-            MemberService service =
-                    new MemberService();
+            MemberService service = new MemberService();
 
             service.registerMember(member);
 
-            MemberDAO dao =
-                    new MemberDAO();
+            MemberDAO dao = new MemberDAO();
 
             dao.addMember(member);
 
@@ -86,7 +83,14 @@ public class RegisterMemberPanel extends JPanel {
             );
 
         }
-        catch(Exception ex){
+        catch (InvalidMembershipException ex) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    ex.getMessage()
+            );
+        }
+        catch (Exception ex) {
 
             JOptionPane.showMessageDialog(
                     this,

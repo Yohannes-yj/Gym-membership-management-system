@@ -7,11 +7,15 @@ import java.awt.*;
 
 public class PaymentPanel extends JPanel {
 
+    private PaymentService service;
+
     public PaymentPanel() {
+
+        service = new PaymentService();
 
         setLayout(new GridLayout(4,2));
 
-        JTextField idField =
+        JTextField memberField =
                 new JTextField();
 
         JTextField amountField =
@@ -25,7 +29,7 @@ public class PaymentPanel extends JPanel {
                         "Make Payment");
 
         add(new JLabel("Member ID"));
-        add(idField);
+        add(memberField);
 
         add(new JLabel("Amount"));
         add(amountField);
@@ -37,25 +41,24 @@ public class PaymentPanel extends JPanel {
 
         button.addActionListener(e -> {
 
-            PaymentService service =
-                    new PaymentService();
-
             service.makePayment(
+
                     Integer.parseInt(
-                            idField.getText()
-                    ),
+                            memberField.getText()),
 
                     Double.parseDouble(
-                            amountField.getText()
-                    ),
+                            amountField.getText()),
 
                     dateField.getText()
+
             );
 
             JOptionPane.showMessageDialog(
                     this,
-                    "Payment Successful"
+                    "Payment Successful!"
             );
+
         });
+
     }
 }

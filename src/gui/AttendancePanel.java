@@ -7,19 +7,20 @@ import java.awt.*;
 
 public class AttendancePanel extends JPanel {
 
+    private AttendanceService service;
+
     public AttendancePanel() {
+
+        service = new AttendanceService();
 
         setLayout(new GridLayout(3,2));
 
-        JTextField memberField =
-                new JTextField();
+        JTextField memberField = new JTextField();
 
-        JTextField dateField =
-                new JTextField();
+        JTextField dateField = new JTextField();
 
         JButton button =
-                new JButton(
-                        "Record Attendance");
+                new JButton("Record Attendance");
 
         add(new JLabel("Member ID"));
         add(memberField);
@@ -31,20 +32,17 @@ public class AttendancePanel extends JPanel {
 
         button.addActionListener(e -> {
 
-            AttendanceService service =
-                    new AttendanceService();
-
             service.checkIn(
-                    Integer.parseInt(
-                            memberField.getText()
-                    ),
+                    Integer.parseInt(memberField.getText()),
                     dateField.getText()
             );
 
             JOptionPane.showMessageDialog(
                     this,
-                    "Attendance Recorded"
+                    "Attendance Recorded!"
             );
+
         });
+
     }
 }

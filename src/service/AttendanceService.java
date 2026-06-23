@@ -1,43 +1,32 @@
 package service;
 
-import model.Attendance;
 import java.util.ArrayList;
+import model.Attendance;
 
 public class AttendanceService {
 
-    private ArrayList<Attendance> records;
+    private ArrayList<Attendance> attendanceList;
 
     public AttendanceService() {
-
-        records = new ArrayList<>();
+        attendanceList = new ArrayList<>();
     }
 
-    public void checkIn(
-            int memberId,
-            String date) {
+    public void checkIn(int memberId, String date) {
 
-        records.add(
-                new Attendance(
-                        memberId,
-                        date
-                )
-        );
+        Attendance attendance =
+                new Attendance(memberId, date);
 
-        System.out.println(
-                "Attendance recorded."
-        );
+        attendanceList.add(attendance);
+
+        System.out.println("Attendance recorded.");
     }
 
     public void showAttendance() {
 
-        for(Attendance a : records) {
+        for (Attendance attendance : attendanceList) {
 
-            System.out.println(
-                    "Member ID: "
-                            + a.getMemberId()
-                            + " Date: "
-                            + a.getDate()
-            );
+            System.out.println(attendance);
+
         }
     }
 }

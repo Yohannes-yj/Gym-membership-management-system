@@ -39,8 +39,4 @@ public class Member extends Person {
                membershipType;
     }
 
-    public int getId() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
 }
