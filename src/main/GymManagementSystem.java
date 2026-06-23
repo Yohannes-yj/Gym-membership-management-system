@@ -1,5 +1,6 @@
 package main;
 
+import database.MemberDAO;
 import exception.InvalidMembershipException;
 import file.ReportGenerator;
 import java.util.Scanner;
@@ -22,6 +23,8 @@ public class GymManagementSystem {
 
         PaymentService paymentService =
                 new PaymentService();
+                
+        MemberDAO dao = new MemberDAO();
 
         int choice;
 
@@ -45,24 +48,87 @@ public class GymManagementSystem {
 
             switch(choice) {
 
-                case 1 -> registerMember(
-                            input,
-                            memberService
-                    );
+                case 1 -> {
+                    try {
+                        
+                        System.out.print("ID: ");
+                        int id = input.nextInt();
+                        
+                        input.nextLine();
+                        
+                        System.out.print("Name: ");
+                        String name = input.nextLine();
+                        
+                        System.out.print("Age: ");
+                        int age = input.nextInt();
+                        
+                        input.nextLine();
+                        
+                        System.out.print("Phone: ");
+                        String phone = input.nextLine();
+                        
+                        System.out.print("Membership Type: ");
+                        String type = input.nextLine();
+                        
+                        Member member =
+                                new Member(
+                                        id,
+                                        name,
+                                        age,
+                                        phone,
+                                        type);
+                        
+                        memberService.registerMember(member);
+                        
+                        dao.addMember(member);
+                        
+                    }
+                    catch (InvalidMembershipException e) {
+                        
+                        System.out.println(e.getMessage());
+                    }               } 
 
-                case 2 -> memberService.displayAllMembers();
-
-                case 3 -> recordAttendance(
-                            input,
-                            attendanceService
-                    );
+               case 2 -> dao.viewMembers();
+                case 3 -> {
+                    System.out.print("Member ID: ");
+                    
+                    int memberId = input.nextInt();
+                    
+                    input.nextLine();
+                    
+                    System.out.print("Date: ");
+                    
+                    String date = input.nextLine();
+                    
+                    attendanceService.checkIn(
+                            memberId,
+                            date);  }
 
                 case 4 -> attendanceService.showAttendance();
 
-                case 5 -> makePayment(
-                            input,
-                            paymentService
-                    );
+                case 5 -> {
+                    System.out.print("Member ID: ");
+                    
+                    int paymentId =
+                            input.nextInt();
+                    
+                    System.out.print("Amount: ");
+                    
+                    double amount =
+                            input.nextDouble();
+                    
+                    input.nextLine();
+                    
+                    System.out.print("Date: ");
+                    
+                    String paymentDate =
+                            input.nextLine();
+                    
+                    paymentService.makePayment(
+                            paymentId,
+                            amount,
+                            paymentDate);
+                }
 
                 case 6 -> paymentService.displayPayments();
 
