@@ -1,12 +1,12 @@
 package main;
 
-import model.Member;
-import service.MemberService;
-import service.AttendanceService;
-import service.PaymentService;
 import exception.InvalidMembershipException;
-
+import file.ReportGenerator;
 import java.util.Scanner;
+import model.Member;
+import service.AttendanceService;
+import service.MemberService;
+import service.PaymentService;
 
 public class GymManagementSystem {
 
@@ -35,7 +35,9 @@ public class GymManagementSystem {
             System.out.println("4. View Attendance");
             System.out.println("5. Make Payment");
             System.out.println("6. View Payments");
-            System.out.println("7. Exit");
+            System.out.println("7. Generate Payment Report");
+            System.out.println("8. View Payment Report");
+            System.out.println("9. Exit");
 
             System.out.print("Choose: ");
 
@@ -43,67 +45,39 @@ public class GymManagementSystem {
 
             switch(choice) {
 
-                case 1:
-
-                    registerMember(
+                case 1 -> registerMember(
                             input,
                             memberService
                     );
 
-                    break;
+                case 2 -> memberService.displayAllMembers();
 
-                case 2:
-
-                    memberService.displayAllMembers();
-
-                    break;
-
-                case 3:
-
-                    recordAttendance(
+                case 3 -> recordAttendance(
                             input,
                             attendanceService
                     );
 
-                    break;
+                case 4 -> attendanceService.showAttendance();
 
-                case 4:
-
-                    attendanceService.showAttendance();
-
-                    break;
-
-                case 5:
-
-                    makePayment(
+                case 5 -> makePayment(
                             input,
                             paymentService
                     );
 
-                    break;
+                case 6 -> paymentService.displayPayments();
 
-                case 6:
+                
+                case 7 -> ReportGenerator.savePayments(
+            paymentService.getPayments());
 
-                    paymentService.displayPayments();
-
-                    break;
-
-                case 7:
-
-                    System.out.println(
-                            "Thank you!"
-                    );
-
-                    break;
-
-                default:
-
-                    System.out.println(
+case 8 -> ReportGenerator.readPayments();
+    
+                default -> System.out.println(
                             "Invalid Option"
                     );
             }
 
-        } while(choice != 7);
+        } while(choice != 9);
     }
 
     public static void registerMember(

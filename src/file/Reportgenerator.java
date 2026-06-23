@@ -1,11 +1,11 @@
 package file;
 
-import model.Payment;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import model.Payment;
 
 public class ReportGenerator {
     public static void readPayments() {
@@ -41,8 +41,7 @@ public class ReportGenerator {
 
         try {
 
-            FileWriter writer =
-                    new FileWriter(
+            FileWriter writer = new FileWriter(
                             "payments.txt"
                     );
 
