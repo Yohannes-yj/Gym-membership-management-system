@@ -51,4 +51,8 @@ public class ReportGenerator {
 
     }
 
+    public static void readPayments() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
 }
